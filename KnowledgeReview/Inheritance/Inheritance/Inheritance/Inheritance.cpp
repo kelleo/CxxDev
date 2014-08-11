@@ -20,7 +20,7 @@ public:
 		//cout << "A Constructor data " << nData << endl;
 	}
 
-	virtual void What()
+	void What()
 	{
 		cout << "A What" << endl;
 	}
@@ -55,7 +55,7 @@ public:
 		cout << "B Copy Constructor" << endl;
 	}
 
-	virtual void What()
+	void What()
 	{
 		cout << "B What" << endl;
 	}
@@ -83,10 +83,10 @@ B& func2(B& b)
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	//指针和引用，只认new的对象类型，不论接收的指针和引用是父类还是子类的指针和引用，函数都是调用new的类型的成员函数。
 	A *pa = new B;
 	A &a = *pa;
 
+	//父类指针指向子类对象时，如果调用的函数是虚函数，则调用子类函数，如果不是虚函数，则调用指针对应类型的函数，引用与指针相同。
 	pa->What();
 	a.What();
 
